@@ -1,0 +1,27 @@
+# Doxygen configuration - Zephyr Industries Load Balancer
+# Generate with:  make docs     (HTML appears in docs/html/index.html)
+PROJECT_NAME           = "Zephyr Industries Load Balancer"
+PROJECT_BRIEF          = "Project 4: queue-based load balancer simulation with firewall, scaling and Switch"
+PROJECT_LOGO           = assets/Z.png
+OUTPUT_DIRECTORY       = docs
+INPUT                  = . README.md
+FILE_PATTERNS          = *.h *.cpp *.md
+RECURSIVE              = NO
+EXCLUDE_PATTERNS       = */docs/*
+USE_MDFILE_AS_MAINPAGE = README.md
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+SOURCE_BROWSER         = YES
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+GENERATE_LATEX         = NO
+HTML_COLORSTYLE        = LIGHT
+HTML_COLORSTYLE_HUE    = 229
+HTML_COLORSTYLE_SAT    = 100
+HTML_COLORSTYLE_GAMMA  = 80
+HAVE_DOT               = YES
+CLASS_DIAGRAMS         = YES
+CALL_GRAPH             = NO
+UML_LOOK               = YES
+QUIET                  = YES

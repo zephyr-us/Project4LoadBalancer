@@ -1,0 +1,10 @@
+# Firewall rules: one range per line. Formats:
+#   a.b.c.d-e.f.g.h     inclusive range
+#   a.b.c.d/nn          CIDR block
+#   a.b.c.d             single address
+# Lines starting with # are comments.
+
+10.0.0.0/8               # private space that should never reach the public front end
+192.0.2.0-192.0.2.255    # documentation range, treated as an attacker subnet
+198.51.100.0/24          # second attacker subnet
+203.0.113.77             # one known bad host

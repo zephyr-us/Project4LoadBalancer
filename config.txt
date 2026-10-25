@@ -1,0 +1,38 @@
+# Zephyr Industries Load Balancer - configuration
+# Format: key=value   (# starts a comment). Command-line options override these values.
+
+# ---- run size ----
+servers=20                  # starting web servers (asked at startup unless -s is given)
+run_cycles=100000           # clock cycles to simulate (asked at startup unless -t is given)
+queue_per_server=100        # initial queue = servers x this
+
+# ---- traffic ----
+arrival_rate=0.7            # average new requests per clock cycle
+process_min_cycles=10       # processing ('P') job length range
+process_max_cycles=50
+stream_min_cycles=30        # streaming ('S') job length range
+stream_max_cycles=120
+stream_share=0.3            # fraction of requests that are streaming
+bad_ip_share=0.03           # fraction of requests that come from blocked IP ranges
+burst_chance=0.0001         # chance per cycle that a traffic spike begins
+burst_length=500            # cycles a spike lasts
+burst_multiplier=3          # arrival rate multiplier during a spike
+
+# ---- scaling ----
+cooldown=25                 # cycles to wait after adding/removing a server
+min_per_server=50           # remove a server if queue < this x servers
+max_per_server=80           # add a server if queue > this x servers
+min_servers=1
+max_servers=500
+
+# ---- bonus: Switch ----
+mode=single                 # single | switch
+switch_stream_fraction=0.4  # share of servers given to the streaming balancer
+
+# ---- output ----
+verbose=false               # -v / -q on the command line override this
+status_interval=5000        # cycles between status lines in verbose mode
+color=true
+seed=42                     # 0 = different random run every time
+log_file=loadbalancer.log
+blocked_ranges_file=blocked_ranges.txt
